@@ -34,12 +34,13 @@ public class Account {
     }
 
     /**Withdraw money from balance*/
-    public void withdraw(double cash) {
+    public double withdraw(double cash) {
         // Can't be able to withdraw if amount is > balance
         if (cash > balance)
             throw new IllegalArgumentException("You can't rob the bank. The bank robs you!");
-        else this.balance -= cash;
-
+        else
+            this.balance -= cash;
+        return this.balance;
     }
     /**Display balance*/
     public double getBalance() {

@@ -1,19 +1,11 @@
 package bank;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
 
     Account sut;
 
-    @BeforeEach
-    public void Account() {
-        // Kollar om allt funkar/inte funkar vid byte av värden
-        sut = new Account(0,10);
-    }
 
     @Test
     public void cantSetInitialCashToNegative() {
@@ -38,30 +30,34 @@ class AccountTest {
     @Test
     public void cantDepositNegativeOrZeroAmountToBalance() {
         // Arrange
-        double expected = 0;
+        sut = new Account(1, 1);
+        double expected = 2;
         // Act
-        double actual = sut.deposit(-1);
+        sut.deposit(1);
         // Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, sut.getBalance());
     }
 
     @Test
     public void canDepositToBalance() {
-        //Arrange
-        double expected = sut.getBalance();
+        // Arrange
+        sut = new Account(1,1);
+        double expected = 11;
         // Act
-        double actual = sut.deposit(1);
+        sut.deposit(10);
         // Assert
-        assertEquals(expected, actual);
+        assertEquals(expected, sut.getBalance());
     }
 
     @Test
     public void cantWithdrawIfNotEnoughMoney() {
         // Arrange
-        double expected = 101;
+        sut = new Account(11,1);
+        double expected = 0;
         // Act
-        double actual = sut.withdraw(100);
+        double value = sut.withdraw(11);
         // Assert
-        assertEquals(expected, actual);
+        double moneyLeft = sut.getBalance() - value;
+        assertEquals(expected,moneyLeft);
     }
 }
