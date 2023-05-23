@@ -60,4 +60,15 @@ class AccountTest {
         double moneyLeft = sut.getBalance() - value;
         assertEquals(expected,moneyLeft);
     }
+
+    @Test
+    void canWithdrawIfEnoughMoney() {
+        // Arrange
+        sut = new Account(13.37,1);
+        double expected = 0.37;
+        // Act
+        sut.withdraw(13);
+        // Assert
+        assertEquals(expected, sut.getBalance(),0.1);
+    }
 }
