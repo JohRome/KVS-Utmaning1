@@ -5,42 +5,44 @@ package bank;
 
 public class Account {
 
-    private final double balance;
-    private int accountNumber;
+    private double balance;
+    private final int accountNumber;
 
     /**Sets initial balance and account number*/
     public Account(double initialCash, int accountNumber) {
-        // Can't be able to add a negative amount of cash
+        // Can't be able to add < 0 amount of money
         if (initialCash < 0) {
-            System.out.println("Balance can't be < 0");
-            this.balance = 0;
+            throw new IllegalArgumentException("You can't open a bank account with a negative amount");
         } else {
             this.balance = initialCash;
         }
-
-        if (accountNumber < 0) {
-            System.out.println("Account number can't be < 0");
+        // Can't be able to set account number to <= 0
+        if (accountNumber <= 0) {
+            throw new IllegalArgumentException("Account number cant be <= 0");
         } else {
             this.accountNumber = accountNumber;
         }
-
-        // Can't be able to add a negative account number
     }
 
     /**Add money to balance*/
-    public void deposit(double cash) {
-        if (cash <= 0) {
-            System.out.println("Can't deposit 0 or < 0");
-        }
-        // Can't be able to add a negative amount of cash
-        // Can't be able to deposit 0
+    public double deposit(double cash) {
+        // Can't be able to add <= 0 amount to balance
+        if (cash <= 0)
+            return 0;
+        else
+            this.balance += cash;
 
+        return balance;
     }
+
     /**Withdraw money from balance*/
     public double withdraw(double cash) {
-        // Can't be able to add a negative amount of cash
         // Can't be able to withdraw if amount is > balance
-        return 0;
+        if (cash > balance)
+            throw new IllegalArgumentException("You can't rob the bank. The bank robs you!");
+        else this.balance -= cash;
+
+        return balance;
     }
     /**Display balance*/
     public double getBalance() {

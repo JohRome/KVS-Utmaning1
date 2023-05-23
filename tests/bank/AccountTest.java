@@ -11,7 +11,8 @@ class AccountTest {
 
     @BeforeEach
     public void Account() {
-        sut = new Account(0,0);
+        // Kollar om allt funkar/inte funkar vid byte av värden
+        sut = new Account(0,1);
     }
 
     @Test
@@ -19,7 +20,7 @@ class AccountTest {
         // Arrange
         double expected = 0;
         // Act
-        sut = new Account(-1, 0);
+        sut = new Account(0, 1);
         // Assert
         assertEquals(expected, sut.getBalance());
     }
@@ -27,22 +28,52 @@ class AccountTest {
     @Test
     public void cantSetAccountNumberToNegative() {
         // Arrange
-        int expected = 0;
+        int expected = 1;
         // Act
-        sut = new Account(0, -1);
+        sut = new Account(0, 1);
         // Assert
         assertEquals(expected, sut.getAccountNumber());
     }
 
     @Test
-    public void cantDepositNegativeOrZeroAmount() {
+    public void cantDepositNegativeOrZeroAmountToBalance() {
         // Arrange
         double expected = 0;
         // Act
-        double actual = -1.3;
-        sut.deposit(actual);
+        double actual = sut.deposit(-1);
+        // Assert
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void canDepositToBalance() {
+        //Arrange
+        double expected = sut.getBalance();
+        // Act
+        double actual = sut.deposit(1);
         // Assert
         assertEquals(expected, actual);
+    }
 
+    @Test
+    public void cantWithdrawIfNotEnoughMoney() {
+        // Arrange
+        double expected = 0;
+        // Act
+        sut = new Account(100,1);
+        double actual = sut.withdraw(100);
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void canWithdrawWithEnoughMoney() {
+        // Arrange
+        double expected = 10.0;
+        // Act
+        sut = new Account(100, 1);
+        double actual = sut.withdraw(90);
+        // Assert
+        assertEquals(expected, actual);
     }
 }
