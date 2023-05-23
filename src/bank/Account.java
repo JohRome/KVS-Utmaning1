@@ -28,10 +28,13 @@ public class Account {
     }
 
     /**Add money to balance*/
-    public double deposit(double cash) {
+    public void deposit(double cash) {
+        if (cash <= 0) {
+            System.out.println("Can't deposit 0 or < 0");
+        }
         // Can't be able to add a negative amount of cash
         // Can't be able to deposit 0
-        return 0;
+
     }
     /**Withdraw money from balance*/
     public double withdraw(double cash) {
