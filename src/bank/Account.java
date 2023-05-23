@@ -18,6 +18,12 @@ public class Account {
             this.balance = initialCash;
         }
 
+        if (accountNumber < 0) {
+            System.out.println("Account number can't be < 0");
+        } else {
+            this.accountNumber = accountNumber;
+        }
+
         // Can't be able to add a negative account number
     }
 
