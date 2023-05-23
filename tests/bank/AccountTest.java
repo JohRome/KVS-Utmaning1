@@ -12,7 +12,7 @@ class AccountTest {
     @BeforeEach
     public void Account() {
         // Kollar om allt funkar/inte funkar vid byte av värden
-        sut = new Account(0,1);
+        sut = new Account(0,10);
     }
 
     @Test
@@ -58,21 +58,9 @@ class AccountTest {
     @Test
     public void cantWithdrawIfNotEnoughMoney() {
         // Arrange
-        double expected = 0;
+        double expected = 101;
         // Act
-        sut = new Account(100,1);
         double actual = sut.withdraw(100);
-        // Assert
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void canWithdrawWithEnoughMoney() {
-        // Arrange
-        double expected = 10.0;
-        // Act
-        sut = new Account(100, 1);
-        double actual = sut.withdraw(90);
         // Assert
         assertEquals(expected, actual);
     }

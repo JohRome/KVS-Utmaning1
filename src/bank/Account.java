@@ -25,24 +25,21 @@ public class Account {
     }
 
     /**Add money to balance*/
-    public double deposit(double cash) {
+    public void deposit(double cash) {
         // Can't be able to add <= 0 amount to balance
         if (cash <= 0)
-            return 0;
+            throw new IllegalArgumentException("Can't deposit <= 0 money");
         else
             this.balance += cash;
-
-        return balance;
     }
 
     /**Withdraw money from balance*/
-    public double withdraw(double cash) {
+    public void withdraw(double cash) {
         // Can't be able to withdraw if amount is > balance
         if (cash > balance)
             throw new IllegalArgumentException("You can't rob the bank. The bank robs you!");
         else this.balance -= cash;
 
-        return balance;
     }
     /**Display balance*/
     public double getBalance() {
