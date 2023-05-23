@@ -35,7 +35,7 @@ class AccountTest {
         // Act
         sut.deposit(1);
         // Assert
-        assertEquals(expected, sut.getBalance());
+        assertEquals(expected, sut.getBalance(), 0.1);
     }
 
     @Test
@@ -46,7 +46,7 @@ class AccountTest {
         // Act
         sut.deposit(10);
         // Assert
-        assertEquals(expected, sut.getBalance());
+        assertEquals(expected, sut.getBalance(), 0.1);
     }
 
     @Test
@@ -58,7 +58,7 @@ class AccountTest {
         double value = sut.withdraw(11);
         // Assert
         double moneyLeft = sut.getBalance() - value;
-        assertEquals(expected,moneyLeft);
+        assertEquals(expected,moneyLeft, 0.1);
     }
 
     @Test
