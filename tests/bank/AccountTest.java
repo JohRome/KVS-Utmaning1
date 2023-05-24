@@ -6,6 +6,9 @@ class AccountTest {
 
     Account sut;
 
+    /**
+     * Ensures that initialCash cant be set to <= 0
+     */
     @Test
     public void cantSetInitialCashToNegative() {
         // Arrange
@@ -16,6 +19,9 @@ class AccountTest {
         assertEquals(expected, sut.getBalance());
     }
 
+    /**
+     * Ensures that accountNumber cant be set to <0
+     */
     @Test
     public void cantSetAccountNumberToNegative() {
         // Arrange
@@ -26,6 +32,9 @@ class AccountTest {
         assertEquals(expected, sut.getAccountNumber());
     }
 
+    /**
+     * Ensures that you cant deposit <= 0
+     */
     @Test
     public void cantDepositNegativeOrZeroAmountToBalance() {
         // Arrange
@@ -37,6 +46,9 @@ class AccountTest {
         assertEquals(expected, sut.getBalance(), 0.1);
     }
 
+    /**
+     * Ensures you can deposit
+     */
     @Test
     public void canDepositToBalance() {
         // Arrange
@@ -48,6 +60,10 @@ class AccountTest {
         assertEquals(expected, sut.getBalance(), 0.1);
     }
 
+    /**
+     * Ensures that you cant withdraw more money than you have.
+     * You cant rob the bank, the bank robs you. . .
+     */
     @Test
     public void cantWithdrawIfNotEnoughMoney() {
         // Arrange
@@ -59,6 +75,9 @@ class AccountTest {
         assertEquals(expected,sut.getBalance(), 0.1);
     }
 
+    /**
+     * Ensures that you actually can withdraw
+     */
     @Test
     void canWithdrawIfEnoughMoney() {
         // Arrange
