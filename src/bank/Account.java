@@ -6,9 +6,9 @@ public class Account {
     private final int accountNumber;
 
     /**
-     * @param initialCash - sets initial balance to the account. Mustn't be < 0
-     * @param accountNumber - sets initial account number. Mustn't be <= 0
-     * @throws IllegalArgumentException - if requirements are not met, arguments be thrown
+     * @param initialCash sets initial balance to the account. Mustn't be < 0
+     * @param accountNumber sets initial account number. Mustn't be <= 0
+     * @throws IllegalArgumentException if requirements are not met, arguments be thrown
      */
     public Account(double initialCash, int accountNumber) {
         // Can't be able to add < 0 amount of money
@@ -26,8 +26,8 @@ public class Account {
     }
 
     /**
-     * @param cash - deposit cash to your bank account. Mustn't be <= 0
-     * @throws IllegalArgumentException - if requirement is not met, arguments be thrown
+     * @param cash deposit cash to your bank account. Mustn't be <= 0
+     * @throws IllegalArgumentException if requirement is not met, arguments be thrown
      */
     public void deposit(double cash) {
         // Can't be able to add <= 0 amount to balance
@@ -36,8 +36,8 @@ public class Account {
     }
 
     /**
-     * @param cash - withdraw cash from bank account. Must not withdraw more than you have
-     * @throws IllegalArgumentException - if requirement is not met, arguments be thrown
+     * @param cash withdraw cash from bank account. Must not withdraw more than you have
+     * @throws IllegalArgumentException if requirement is not met, arguments be thrown
      */
     public void withdraw(double cash) { // ändra returntype till void för att vi redan har getBalance()
         // Can't be able to withdraw if amount is > balance
@@ -46,14 +46,14 @@ public class Account {
     }
 
     /**
-     * @return - returning current balance in bank account
+     * @return returning current balance in bank account
      */
     public double getBalance() {
         return balance;
     }
 
     /**
-     * @return - returning the account number
+     * @return returning the account number
      */
     public int getAccountNumber() {
         return accountNumber;
