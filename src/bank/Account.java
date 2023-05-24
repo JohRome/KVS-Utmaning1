@@ -34,7 +34,7 @@ public class Account {
     }
 
     /**Withdraw money from balance*/
-    public double withdraw(double cash) {
+    public double withdraw(double cash) { // ändra returntype till void för att vi redan har getBalance()
         // Can't be able to withdraw if amount is > balance
         if (cash > balance)
             throw new IllegalArgumentException("You can't rob the bank. The bank robs you!");

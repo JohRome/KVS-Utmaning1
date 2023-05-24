@@ -6,7 +6,6 @@ class AccountTest {
 
     Account sut;
 
-
     @Test
     public void cantSetInitialCashToNegative() {
         // Arrange
