@@ -54,10 +54,9 @@ class AccountTest {
         sut = new Account(11,1);
         double expected = 0;
         // Act
-        double value = sut.withdraw(11);
+        sut.withdraw(11);
         // Assert
-        double moneyLeft = sut.getBalance() - value;
-        assertEquals(expected,moneyLeft, 0.1);
+        assertEquals(expected,sut.getBalance(), 0.1);
     }
 
     @Test
