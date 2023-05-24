@@ -6,23 +6,23 @@ public class Account {
     private final int accountNumber;
 
     /**
-     * @param initialCash sets initial balance to the account. Mustn't be < 0
+     * @param initialCash   sets initial balance to the account. Mustn't be < 0
      * @param accountNumber sets initial account number. Mustn't be <= 0
      * @throws IllegalArgumentException if requirements are not met, arguments be thrown
      */
     public Account(double initialCash, int accountNumber) {
         // Can't be able to add < 0 amount of money
-        if (initialCash < 0) {
+        if (initialCash < 0)
             throw new IllegalArgumentException("You can't open a bank account with a negative amount");
-        } else {
+        else
             this.balance = initialCash;
-        }
+
         // Can't be able to set account number to <= 0
-        if (accountNumber <= 0) {
+        if (accountNumber <= 0)
             throw new IllegalArgumentException("Account number cant be <= 0");
-        } else {
+        else
             this.accountNumber = accountNumber;
-        }
+
     }
 
     /**
@@ -32,7 +32,8 @@ public class Account {
     public void deposit(double cash) {
         // Can't be able to add <= 0 amount to balance
         if (cash <= 0) throw new IllegalArgumentException("Can't deposit <= 0 money");
-        else this.balance += cash;
+        else
+            this.balance += cash;
     }
 
     /**
@@ -42,7 +43,8 @@ public class Account {
     public void withdraw(double cash) { // ändra returntype till void för att vi redan har getBalance()
         // Can't be able to withdraw if amount is > balance
         if (cash > balance) throw new IllegalArgumentException("You can't rob the bank. The bank robs you!");
-        else this.balance -= cash;
+        else
+            this.balance -= cash;
     }
 
     /**
